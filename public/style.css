@@ -47,21 +47,25 @@ h3 {
  font-size: 25px; 
 }
 
-.url-endpoint {
+.green{
  color: green; 
 }
 
-.url-user-input {
+.blue{
   color: blue;
 }
 
-.short-url {
+.red{
   color: red;
 }
 
 p {
  color: gray; 
-  font-size: 20px
+ font-size: 20px;
+}
+
+.example {
+  font-weight: bold; 
 }
 
 
