@@ -6,7 +6,7 @@ var app = express();
 var mongoose = require('mongoose');
 var bodyparser = require('body-parser');
 var cors = require('cors');
-var bing = require('node-bing-api')({accKey: 'PASTEKEYHERE'});
+var bing = require('node-bing-api')({accKey: 'dc55b2fad84a4cd28e6fb44518ce180b'});
 var searchTerm = require('./models/searchTerm.js');
 
 app.use(express.static('public'));
@@ -23,17 +23,14 @@ app.get("/", function (request, response) {
 
 app.get("/api/recentsearches", function(request, response) {
   //get recent searches from database
-  //display recent searches in JSON format
-  
   searchTerm.find({}, (err, data)=>{
     if(err){
      return "Error searching database"; 
     }
     
+    //display recent searches in JSON format
     response.json(data);
-    
   });
-  
 });
 
 
@@ -59,10 +56,15 @@ app.get("/api/imagesearch/:searchVal*", function(request, response){
   });
   
   //use your own search api here
-  Bing.images(searchVal, {
+  bing.images(searchVal, {
     top: 10,
   }, function(err, response, body){
-  
+    if(err){
+       return "Error performing image search."; 
+    }
+    
+    response.json(body);
+    
   });
   
   response.json({
