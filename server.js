@@ -20,10 +20,22 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/api/latest/imagesearch", function(request, response) {
+
+app.get("/api/recentsearches", function(request, response) {
   //get recent searches from database
   //display recent searches in JSON format
+  
+  searchTerm.find({}, (err, data)=>{
+    if(err){
+     return "Error searching database"; 
+    }
+    
+    response.json(data);
+    
+  });
+  
 });
+
 
 app.get("/api/imagesearch/:searchVal*", function(request, response){
   //get userInput
@@ -44,6 +56,13 @@ app.get("/api/imagesearch/:searchVal*", function(request, response){
      return "Error saving to database"; 
     }
     response.json(data);
+  });
+  
+  //use your own search api here
+  Bing.images(searchVal, {
+    top: 10,
+  }, function(err, response, body){
+  
   });
   
   response.json({
