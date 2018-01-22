@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const schema = mongoose.schema;
+const schema = mongoose.Schema;
 //model -- the "setup" of the document
 const searchTermSchema = new schema({
 

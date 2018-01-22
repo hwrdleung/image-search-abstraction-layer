@@ -33,7 +33,6 @@ app.get("/api/recentsearches", function(request, response) {
   });
 });
 
-
 app.get("/api/imagesearch/:searchVal*", function(request, response){
   //get userInput
   //get offset from userInput
@@ -64,7 +63,6 @@ app.get("/api/imagesearch/:searchVal*", function(request, response){
     }
     
     response.json(body);
-    
   });
   
   response.json({
