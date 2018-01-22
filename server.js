@@ -30,7 +30,12 @@ app.get("/api/imagesearch/:searchVal*", function(request, response){
   //display search results in JSON format
   
   var { searchVal } = request.params;
-  var { offset }
+  var { offset } = request.query;
+  
+  response.json({
+    searchVal,
+    offset
+  });
   
 });
         
