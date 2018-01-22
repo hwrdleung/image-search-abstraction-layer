@@ -51,7 +51,6 @@ app.get("/api/imagesearch/:searchVal*", function(request, response){
     if(err){
      return "Error saving to database"; 
     }
-    response.json(data);
   });
   
   //use your own search api here
@@ -71,12 +70,7 @@ app.get("/api/imagesearch/:searchVal*", function(request, response){
   });
   
 });
-        
-
-        
-
-
-
+   
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
